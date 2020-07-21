@@ -4,19 +4,19 @@ require './game'
 
 P1 = Player.new('Player1')
 P2 = Player.new('Player2')
-current_player = P1
-
+@current_player = P1
+# Introduces players to game
 def start
   puts "WELCOME TO TWO-O-PLAYER MATH GAME!"
   puts "Ready Player1?"
   puts "Ready Player2?"
   puts "Let's start!"
 end
-
+# Check which players are still alive
 def players_are_alive
   !P1.gameover && !P2.gameover
 end
-
+# Verifies if answer is correct, if not takes away one life
 def check_player_answer(question, player)
   print "> "
   input = $stdin.gets.chomp
@@ -27,16 +27,16 @@ def check_player_answer(question, player)
     player.incorrect
   end
 end
-
+# Shows current lives left
 def show_stats
   puts "P1: #{P1.lives}/3 vs P2: #{P2.lives}/3"
 end
-
-def change_player(current_player)
-  if current_player = P1
-    current_player = P2
+# Switches player
+def change_player
+  if (@current_player == P1)
+    @current_player = P2
   else
-    current_player = P1
+    @current_player = P1
   end
 end
 
@@ -50,7 +50,7 @@ end
 
 start
 while players_are_alive
-  new_turn(current_player)
+  new_turn(@current_player)
 end
 
 if P1.gameover

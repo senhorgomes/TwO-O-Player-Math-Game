@@ -1,9 +1,10 @@
 class Player
 
-  attr_reader :name, :lives
+  attr_reader :name, :lives, :currently_playing
   def initialize(name)
   @name = name
   @lives = 3
+  @currently_playing = true
   end
 
   def incorrect
